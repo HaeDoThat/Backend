@@ -3,7 +3,7 @@ const SALT_ROUND = 14;
 
 async function createHash(password) {
   try {
-    const HASH = await bcyrpt.hash(password, SALT_ROUND);
+    const HASH = await bcrypt.hash(password, SALT_ROUND);
     return HASH;
   } catch (error) {
     throw error;
