@@ -20,7 +20,7 @@ router.post('/', isEmail, isName, isPassword, async (req, res, next) => {
       });
     }
 
-    authUser.signUp(name, email, password);
+    await authUser.signUp(name, email, password);
     
     res.status(201).send();
   } catch (error) {
