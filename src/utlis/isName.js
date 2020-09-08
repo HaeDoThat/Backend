@@ -1,4 +1,4 @@
-const { badRequest, invalidName } = require('../error/error');
+const { badRequest, invalidName } = require('../error');
 
 function isName(name) {
   const checkRegExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|0-9||_]|-$/;
