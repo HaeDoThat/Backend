@@ -2,7 +2,7 @@ const { isEmail, isName, isPassword } = require('../utlis');
 
 exports.isEmail = (req, res, next) => {
   try {
-    if (isEmail(req.email)) {
+    if (isEmail(req.body.email)) {
       next();
     }
   } catch (error) {
@@ -15,7 +15,7 @@ exports.isEmail = (req, res, next) => {
 
 exports.isName = (req, res, next) => {
   try {
-    if (isName(req.name)) {
+    if (isName(req.body.name)) {
       next();
     }
   } catch (error) {
@@ -28,7 +28,7 @@ exports.isName = (req, res, next) => {
 
 exports.isPassword = (req, res, next) => {
   try {
-    if (isPassword(req.password)) {
+    if (isPassword(req.body.password)) {
       next();
     }
   } catch (error) {
