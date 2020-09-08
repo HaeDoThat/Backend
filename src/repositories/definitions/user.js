@@ -23,7 +23,7 @@ User.init({
     }
   },
   pw: {
-    type: DataTypes.STRING(33),
+    type: DataTypes.STRING(72),
     allowNull: false
   }
 }, {
