@@ -5,14 +5,14 @@ class AuthUser {
     this.userModel = userModel;
   }
 
-  async singUp(name, email, password) {
+  async signUp(name, email, password) {
     try {
-     const HASH = createHash(password);
+     const HASH = await createHash(password);
 
-     this.userModel.create({
+     await this.userModel.create({
       name: name,
       email: email,
-      password: password
+      password: HASH
      });
     } catch (error) {
       throw error;
