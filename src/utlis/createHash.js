@@ -6,6 +6,8 @@ async function createHash(password) {
     const HASH = await bcrypt.hash(password, SALT_ROUND);
     return HASH;
   } catch (error) {
+    error.status = 500;
+    error.message = 'Failed to password encryption.';
     throw error;
   }
 }
