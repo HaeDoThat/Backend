@@ -9,6 +9,4 @@ module.exports = (app) => {
   app.use(express.urlencoded({ extended: true }));
 
   app.use('/', routes);
-
-  app.use()
 };
