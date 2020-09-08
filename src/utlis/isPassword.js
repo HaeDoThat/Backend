@@ -1,4 +1,4 @@
-const { badRequest, invalidPassword } = require('../error/error');
+const { badRequest, invalidPassword } = require('../error');
 
 function isPassword(password) {
   if (!password) {
