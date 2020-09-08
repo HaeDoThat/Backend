@@ -5,7 +5,7 @@ class AuthUser {
     this.userModel = userModel;
   }
 
-  async singUp(name, email, password) {
+  async signUp(name, email, password) {
     try {
      const HASH = await createHash(password);
 
