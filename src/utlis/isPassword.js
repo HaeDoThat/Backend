@@ -1,7 +1,7 @@
 const { badRequest, invalidPassword } = require('../error');
 
 function isPassword(password) {
-  const checkRegExp = /[0-9|A-Z|a-z|\{|\}|\[|\]|\/|?|.|,|;|:|\||\)|\_|*|~|`|!|^|\-|+|<|>|@|\#|$|%|&|\\|\=|\(|\'|\"|]/g;
+  const checkRegExp = /[0-9|A-Z|a-z|\{|\}|\[|\]|\/|?|.|,|;|:|\||\)|\_|*|~|`|!|^|\-|+|<|>|@|\#|$|%|&|\\|\=|\(|\'|\"| ]/g;
   if (!password) {
     throw badRequest;
   }
