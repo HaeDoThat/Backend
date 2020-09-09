@@ -1,7 +1,7 @@
 const { badRequest, invalidName } = require('../error');
 
 function isName(name) {
-  const checkRegExp = /^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|0-9||_]|-$/;
+  const checkRegExp = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|0-9|\_|\-]/g;
 
   if (!name) {
     throw badRequest;
