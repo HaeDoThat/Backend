@@ -21,12 +21,34 @@ router.post('/', isEmail, isName, isPassword, async (req, res, next) => {
     }
 
     await authUser.signUp(name, email, password);
-    
+
     res.status(201).send();
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
+
+router.post('/auth', isEmail, isPassword, async (req, res, next) => {
+  const { email, password } = req.body;
+
+  let access_token;
+  try {
+    access_token = await authUser.signIn(email, password);
+  }
+  catch (e) {
+    res.status(400).send({
+      errorCode: 400,
+      message: '로그인 실패'
+    });
+  }
+
+  res.send({
+    "access_token": access_token,
+    "message": "로그인에 성공하였습니다."
+  });
+
+});
+
 
 module.exports = router;
