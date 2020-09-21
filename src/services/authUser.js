@@ -16,7 +16,7 @@ class AuthUser {
             await this.userModel.create({
                 name: name,
                 email: email,
-                password: HASH
+                pw: HASH
             });
         } catch (error) {
             throw error;
