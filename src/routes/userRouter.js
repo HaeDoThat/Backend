@@ -5,7 +5,7 @@ const AuthUser = require('../services/authUser');
 const authUser = new AuthUser(User);
 
 const { isEmail, isName, isPassword } = require('./middleware');
-const { isRegisteredEmail, createHash } = require('../utlis');
+const { isRegisteredEmail } = require('../utlis');
 
 const router = express.Router();
 
@@ -13,16 +13,19 @@ const router = express.Router();
 // 각 입력 형식이 적절한지 확인 필요
 router.post('/', isEmail, isName, isPassword, async (req, res, next) => {
   const { name, email, password } = req.body;
-  try {
-    if (isRegisteredEmail(User, email)) {
-      res.status(409).json({
-        message: "이미 사용 중인 email입니다."
-      });
-    }
+  
+  if (await isRegisteredEmail(User, email)) {
+    res.status(409).send({
+      message: "이미 사용 중인 email입니다."
+    });
+  }
 
+  try {
     await authUser.signUp(name, email, password);
 
-    res.status(201).send();
+    res.status(201).send({
+      message: "성공적으로 가입되었습니다."
+    });
   } catch (error) {
     console.error(error);
     next(error);
