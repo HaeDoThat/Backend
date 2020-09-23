@@ -38,7 +38,7 @@ class AuthUser {
         const stored_user = user_entity.dataValues;
 
         const flag_password_valid = await compareDataAndHash(password, stored_user.password);
-
+        console.log(flag_password_valid);
         if (flag_password_valid == false) {
             throw new Excpetions.FailtoAuthenticationExcpetion;
         }
