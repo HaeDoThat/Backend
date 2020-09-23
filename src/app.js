@@ -8,6 +8,7 @@ const PORT = configs.SERVER_PORT;
 
 init_app(app);
 
+console.log(configs);
 
 app.listen(PORT, () => {
     console.log(`start the server at ${PORT}`);
