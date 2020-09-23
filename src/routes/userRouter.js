@@ -40,13 +40,13 @@ router.post('/auth', isEmail, isPassword, async (req, res, next) => {
     access_token = await authUser.signIn(email, password);
   }
   catch (e) {
-    res.status(400).send({
-      errorCode: 400,
+    res.status(403).send({
+      errorCode: 403,
       message: '로그인 실패'
     });
   }
 
-  res.send({
+  res.status(200).send({
     "access_token": access_token,
     "message": "로그인에 성공하였습니다."
   });
