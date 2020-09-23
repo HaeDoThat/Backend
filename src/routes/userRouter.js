@@ -18,6 +18,7 @@ router.post('/', isEmail, isName, isPassword, async (req, res, next) => {
     res.status(409).send({
       message: "이미 사용 중인 email입니다."
     });
+    return;
   }
 
   try {
@@ -26,6 +27,7 @@ router.post('/', isEmail, isName, isPassword, async (req, res, next) => {
     res.status(201).send({
       message: "성공적으로 가입되었습니다."
     });
+    return;
   } catch (error) {
     console.error(error);
     next(error);
@@ -44,6 +46,7 @@ router.post('/auth', isEmail, isPassword, async (req, res, next) => {
       errorCode: 403,
       message: '로그인 실패'
     });
+    return;
   }
 
   res.status(200).send({
